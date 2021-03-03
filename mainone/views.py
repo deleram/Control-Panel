@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import *
 
 def login(request):
     return render(request, 'mainone/login.html')
@@ -18,10 +19,18 @@ def teachervid(request):
 
 
 def student(request):
-    return render(request, 'mainone/student.html')
+    videos=Videos.objects.all()
+    context={'videos':videos}
+    return render(request, 'mainone/student.html',context)
 
 def studentexam(request):
     return render(request, 'mainone/studentexam.html')
 
 def studentvid(request):
     return render(request, 'mainone/studentvid.html')
+
+
+def video(request,pk):
+    video=Videos.objects.get(id=pk)
+    contexts={'video' : video}
+    return render(request,'mainone/video.html' , contexts)

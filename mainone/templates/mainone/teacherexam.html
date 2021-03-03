@@ -10,7 +10,7 @@
     <br>
     <br>
     
-    <table border=2 dir=rtl    cell.spacing=1 style="width:80%" align="center">
+    <table border=2 dir=rtl    cell.spacing=1 style="width:80%" align="center" id="tableexamt">
         <tr>
             <td height=50px align="center" ><b>شماره دانشجویی</td>
           <th>تاریخ آخرین ارسال</th>
@@ -18,5 +18,52 @@
           <th>نمره</th>
         </tr>
       </table>
+      <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<input type='text' id='cellfour' value="نمره" />
+<input type='text' id='cellThree' value="فایل ارسالی" />
+<input type='text' id='cellTwo' value="تاریخ آخرین ارسال" />
+<input type='text' id='cellOne' value="شماره دانشجویی"/>
+<button onclick="myFunction()" >اطلاعات جدید را وارد کن</button>
+
+<script>
+  function myFunction() {
+    var table = document.getElementById("tableexamt");
+    var row = table.insertRow(1);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    cell1.innerHTML = document.getElementById('cellOne').value;
+    cell2.innerHTML = document.getElementById('cellTwo').value;
+    cell3.innerHTML = document.getElementById('cellThree').value;
+    cell4.innerHTML = document.getElementById('cellfour').value;
+  }
+</script>
+
 </body>
 </html>
