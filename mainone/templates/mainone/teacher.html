@@ -1,41 +1,15 @@
 <!DOCTYPE html>
+<meta charset="utf-8"/>
 <html>
 <head>
+    <title>TEACHER</title>
 </head>
 <body>
-
-<p>Click the button to add a new row at the first position of the table and then add cells and content.</p>
-
-<table id="myTable">
-  <tr>
-    <td>Row1 cell1</td>
-    <td>Row1 cell2</td>
-  </tr>
-  <tr>
-    <td>Row2 cell1</td>
-    <td>Row2 cell2</td>
-  </tr>
-  <tr>
-    <td>Row3 cell1</td>
-    <td>Row3 cell2</td>
-  </tr>
-</table>
-<br>
-
-<input type='text' id='cellOne' />
-<input type='text' id='cellTwo' />
-<button onclick="myFunction()">Try it</button>
-
-<script>
-function myFunction() {
-  var table = document.getElementById("myTable");
-  var row = table.insertRow(0);
-  var cell1 = row.insertCell(0);
-  var cell2 = row.insertCell(1);
-  cell1.innerHTML = document.getElementById('cellOne').value;
-  cell2.innerHTML = document.getElementById('cellTwo').value;
-}
-</script>
-
+<h1><i>Welcome dear teacher</h1>
+<h2><b>VIDEOS</h2>
+    <hr/>
+{% for y in videos %}
+<h2><a href="{% url 'video' y.id %}">{{y.name_of_the_video}}</a></h2>
+{% endfor %}
 </body>
 </html>

@@ -6,8 +6,9 @@ def login(request):
     return render(request, 'mainone/login.html')
 
 def teacher(request):
-    return render(request, 'mainone/teacher.html')
-
+    videos=Videos.objects.all()
+    context={'videos':videos}
+    return render(request, 'mainone/teacher.html',context)
 
 def teacherexam(request):
     return render(request, 'mainone/teacherexam.html')

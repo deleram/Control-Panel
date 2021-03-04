@@ -11,6 +11,6 @@ class Assignment(models.Model):
 
 class Videos(models.Model):
     name_of_the_video=models.TextField(max_length=30)
-    vid=models.FileField(upload_to='mainone/media', null=True)
+    vid=models.FileField(upload_to='media', null=True)
 
 

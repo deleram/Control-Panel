@@ -6,7 +6,8 @@
 </head>
 <body>
 <h1><i>Welcome dear student</h1>
-<h2><b>VIDEOS</b></h2>
+<h2><b>VIDEOS</h2>
+    <hr/>
 {% for y in videos %}
 <h2><a href="{% url 'video' y.id %}">{{y.name_of_the_video}}</a></h2>
 {% endfor %}
