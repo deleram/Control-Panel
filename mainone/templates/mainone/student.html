@@ -6,6 +6,8 @@
 </head>
 <body>
 <h1><i>Welcome dear student</h1>
+    <h2 align="right"> <span class="hello-msg"  >Hello, {{request.user}}</span>
+        <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span></h2>
 <h2><b>VIDEOS</h2>
     <hr/>
 {% for y in videos %}

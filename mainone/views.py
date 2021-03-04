@@ -4,6 +4,9 @@ from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import *
+from .decorator import *
+
+
 
 def login(request):
     if request.method == 'POST':
@@ -13,9 +16,7 @@ def login(request):
         user=authenticate(request, username=username , password=password)
         if user is not None:
             auth_login(request , user)
-            videos=Videos.objects.all()
-            context={'videos':videos}
-            return render(request , 'mainone/teacher.html', context)
+            return redirect('teacher')
         else:
             messages.info(request , 'Username or password is wrong')
 
@@ -27,6 +28,7 @@ def logingout(request):
     return redirect(login)
 
 @login_required(login_url='login')
+@admin_only
 def teacher(request):
     videos=Videos.objects.all()
     context={'videos':videos}

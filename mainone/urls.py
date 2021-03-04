@@ -5,8 +5,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', views.login , name='login'),
     path('logout/' , views.logingout, name="logout"),
-    path('teacher/', views.teacher),
-    path('student/', views.student),
+    path('teacher/', views.teacher, name='teacher'),
+    path('student/', views.student, name="student"),
     path('studentex/', views.studentexam),
     path('studentvid/', views.studentvid),
     path('teacherex/', views.teacherexam),
