@@ -13,5 +13,11 @@
 {% for y in videos %}
 <h2><a href="{% url 'video' y.id %}">{{y.name_of_the_video}}</a></h2>
 {% endfor %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="text"  name="caption">
+    <input type="file" accept="video/*"  name="file">
+    <button type="submit">Upload file</button>
+  </form>
 </body>
 </html>

@@ -32,6 +32,10 @@ def logingout(request):
 def teacher(request):
     videos=Videos.objects.all()
     context={'videos':videos}
+    if request.method == "POST":
+        file2 = request.FILES["file"]
+        caption = request.POST['caption']
+        document = Videos.objects.create(name_of_the_video=caption ,vid=file2)
     return render(request, 'mainone/teacher.html',context)
 
 def teacherexam(request):
