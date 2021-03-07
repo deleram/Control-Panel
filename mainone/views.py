@@ -67,12 +67,7 @@ def studentexam(request,pk):
     contexts1={'assingn' : assingn}
     if request.method == "POST"  :
         exerfile = request.FILES["exerfile"]
-        if studentexercises.studentname==None:
-            studentexercises.objects.filter(id = pk).update(exercise=exerfile , time=datetime.datetime.now() , studentname=User.first_name)
-        else:
-            des1=studentexercises.des
-            numberex=studentexercises.numberexcer
-            studentexercises.objects.create(exercise=exerfile , time=datetime.datetime.now() , studentname=User.first_name,des=des1 , numberexcer=numberex)
+        studentexercises.objects.filter(id = pk).update(exercise=exerfile , time=datetime.datetime.now() , studentname=User.first_name)
 
 
     return render(request, 'mainone/studentexam.html',contexts1)
