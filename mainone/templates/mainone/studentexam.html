@@ -5,18 +5,15 @@
     <title>STUDENTS</title>
 </head>
 <body>
-<h1><u>Excercises</h1>
+<h1><u>UPLOAD EXERCISES</h1>
+  <h3><i>{{assingn.des}}</h3>
     <br>
     <br>
     <br>
-    
-    <table border=2 dir=rtl    cell.spacing=1 style="width:80%" align="center" >
-        <tr>
-          <td height=50px align="center" ><b>نام تمرین</td>
-          <th>تاریخ آخرین ارسال</th>
-          <th>ارسال پاسخ</th>
-          <th> نمره ثبت شده</th>
-        </tr>
-      </table>
+    <form method="post" enctype="multipart/form-data" >
+      {% csrf_token %}
+      <input type="file"  name="exerfile">
+      <button type="submit">Upload file</button>
+    </form>
 </body>
 </html>

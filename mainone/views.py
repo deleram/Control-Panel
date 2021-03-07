@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import *
 from .decorator import *
-
+import datetime
 
 
 def login(request):
@@ -34,15 +34,17 @@ def teacher(request):
     assign=Assignment.objects.all()
     context={'videos':videos , 'assign':assign}
     if request.method == "POST"  :
-        if  id == "form1":
+        if request.POST.get("form_type") == 'form1':
             file2 = request.FILES["file"]
             caption = request.POST['caption']
             document = Videos.objects.create(name_of_the_video=caption ,vid=file2)
+
         else:
             deadline1= request.POST["deadline"]
             description1= request.POST["description"]
             number= request.POST["number"]
             assigning= Assignment.objects.create(number_of_the_assignment=number , assignment_description=description1 , deadline=deadline1)
+            studentexercise=studentexercises.objects.create(numberexcer=number, des=description1 )
     return render(request, 'mainone/teacher.html',context)
 
 def teacherexam(request):
@@ -56,11 +58,24 @@ def teachervid(request):
 @login_required(login_url='login')
 def student(request):
     videos=Videos.objects.all()
-    context={'videos':videos}
+    assigned=studentexercises.objects.all()
+    context={'videos':videos , 'assigned':assigned}
     return render(request, 'mainone/student.html',context)
 
-def studentexam(request):
-    return render(request, 'mainone/studentexam.html')
+def studentexam(request,pk):
+    assingn=studentexercises.objects.get(id=pk)
+    contexts1={'assingn' : assingn}
+    if request.method == "POST"  :
+        exerfile = request.FILES["exerfile"]
+        if studentexercises.studentname==None:
+            studentexercises.objects.filter(id = pk).update(exercise=exerfile , time=datetime.datetime.now() , studentname=User.first_name)
+        else:
+            des1=studentexercises.des
+            numberex=studentexercises.numberexcer
+            studentexercises.objects.create(exercise=exerfile , time=datetime.datetime.now() , studentname=User.first_name,des=des1 , numberexcer=numberex)
+
+
+    return render(request, 'mainone/studentexam.html',contexts1)
 
 def studentvid(request):
     return render(request, 'mainone/studentvid.html')

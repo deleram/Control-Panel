@@ -18,4 +18,17 @@ class UserProfile(models.Model):
    student_number = models.CharField(max_length=256, blank=True, null=True)
 
 
+class studentexercises(models.Model):
+    des=models.TextField(null=True)
+    numberexcer=models.IntegerField(null=True)
+    exercise=models.FileField(upload_to='media', null=True , blank=True)
+    time=models.DateField(null=True)
+    score=models.IntegerField(range(0,100), null=True , blank=True , unique=True)
+    studentname=models.CharField(max_length=256, blank=True , null=True)
+    def __str__(self):
+        return str(self.studentname) + str(self.numberexcer)
+
+
+
+
 

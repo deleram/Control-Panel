@@ -13,5 +13,25 @@
 {% for y in videos %}
 <h2><a href="{% url 'video' y.id %}">{{y.name_of_the_video}}</a></h2>
 {% endfor %}
+<hr/>
+<h2><b>EXERCISES</h2>
+    <table border=2 dir=rtl    cell.spacing=1 style="width:80%" align="center" id="tableexamt">
+        <tr>
+            <td height=50px align="center" ><b>شماره تمرین</td>
+          <th>تاریخ آخرین ارسال</th>
+          <th>ارسال پاسخ</th>
+          <th>نمره</th>
+
+        </tr>
+        {% for x in assigned %}
+        <tr>
+        <td height=50px align="center" > {{x.numberexcer}} </td>
+        <th>{{x.time}}</th>
+        <th><a href="{% url 'studentex' x.id %}">ورود</a></th>
+        <th>{{x.score}}</x></th>
+        </tr>
+        {% endfor %}
+
+      </table>
 </body>
 </html>

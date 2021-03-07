@@ -4,5 +4,6 @@ from .models import *
 admin.site.register(Assignment)
 admin.site.register(Videos)
 admin.site.register(UserProfile)
+admin.site.register(studentexercises)
 
 

@@ -18,6 +18,8 @@
     <input type="text"  name="caption" value="caption">
     <input type="file" accept="video/*"  name="file">
     <button type="submit">Upload file</button>
+    <input type="hidden" name="form_type" value="form1">
+
   </form>
   <hr/>
 <!--exercises ..............................................................................-->
@@ -45,7 +47,7 @@
 <br>
 <br>
 
-<form method="post" enctype="multipart/form-data" >
+<form method="post" enctype="multipart/form-data" id="addex" >
     {% csrf_token %}
     <input type='date' id='cellThree' name="deadline"/>
     <input type='text' id='cellTwo' value="توضیحات" name="description" />
