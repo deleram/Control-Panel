@@ -13,11 +13,56 @@
 {% for y in videos %}
 <h2><a href="{% url 'video' y.id %}">{{y.name_of_the_video}}</a></h2>
 {% endfor %}
-<form method="post" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data" id='form1'>
     {% csrf_token %}
-    <input type="text"  name="caption">
+    <input type="text"  name="caption" value="caption">
     <input type="file" accept="video/*"  name="file">
     <button type="submit">Upload file</button>
   </form>
+  <hr/>
+<!--exercises ..............................................................................-->
+  <h2><b>EXERCISES</h2>
+    <table border=2 dir=rtl    cell.spacing=1 style="width:80%" align="center" id="tableexamt">
+        <tr>
+            <td height=50px align="center" ><b>شماره تمرین</td>
+          <th>توضیحات</th>
+          <th>آخرین فرصت ارسال</th>
+        </tr>
+        {% for x in assign %}
+        <tr>
+        <td height=50px align="center" > {{x.number_of_the_assignment}} </td>
+        <th>{{x.assignment_description}}</th>
+        <th>{{x.deadline}}</th>
+        </tr>
+        {% endfor %}
+
+      </table>
+      <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<form method="post" enctype="multipart/form-data" >
+    {% csrf_token %}
+    <input type='date' id='cellThree' name="deadline"/>
+    <input type='text' id='cellTwo' value="توضیحات" name="description" />
+    <input type='number' id='cellOne' value=0 name="number"/>
+    <button onclick > اضافه تمرین</button>
+</form>
+<script>
+  function myFunction() {
+    var table = document.getElementById("tableexamt");
+    var row = table.insertRow(1);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    cell1.innerHTML = document.getElementById('cellOne').value;
+    cell2.innerHTML = document.getElementById('cellTwo').value;
+    cell3.innerHTML = document.getElementById('cellThree').value;
+  }
+</script>
 </body>
 </html>

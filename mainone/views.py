@@ -31,11 +31,18 @@ def logingout(request):
 @admin_only
 def teacher(request):
     videos=Videos.objects.all()
-    context={'videos':videos}
-    if request.method == "POST":
-        file2 = request.FILES["file"]
-        caption = request.POST['caption']
-        document = Videos.objects.create(name_of_the_video=caption ,vid=file2)
+    assign=Assignment.objects.all()
+    context={'videos':videos , 'assign':assign}
+    if request.method == "POST"  :
+        if  id == "form1":
+            file2 = request.FILES["file"]
+            caption = request.POST['caption']
+            document = Videos.objects.create(name_of_the_video=caption ,vid=file2)
+        else:
+            deadline1= request.POST["deadline"]
+            description1= request.POST["description"]
+            number= request.POST["number"]
+            assigning= Assignment.objects.create(number_of_the_assignment=number , assignment_description=description1 , deadline=deadline1)
     return render(request, 'mainone/teacher.html',context)
 
 def teacherexam(request):
